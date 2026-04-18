@@ -2,45 +2,54 @@ name: Build Gita AI APK
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+      branches: [ main ]
+        workflow_dispatch:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+        jobs:
+          build:
+              runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+                  steps:
+                        - name: Checkout code
+                                uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '17'
+                                      - name: Set up Java
+                                              uses: actions/setup-java@v4
+                                                      with:
+                                                                distribution: 'zulu'
+                                                                          java-version: '17'
 
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.19.6'
-          channel: 'stable'
-
-      - name: Inject API Keys into constants.dart
-        run: |
-          sed -i "s|static const String anthropicKey = '.*'|static const String anthropicKey = '${{ secrets.ANTHROPIC_KEY }}'|g" gita_flutter_app/gita_flutter/lib/constants.dart || true
-          sed -i "s|static const String elevenLabsKey = '.*'|static const String elevenLabsKey = '${{ secrets.ELEVENLABS_KEY }}'|g" gita_flutter_app/gita_flutter/lib/constants.dart || true
-
-      - name: Get Flutter dependencies
-        working-directory: gita_flutter_app/gita_flutter
-        run: flutter pub get
-
-      - name: Build Debug APK
-        working-directory: gita_flutter_app/gita_flutter
-        run: flutter build apk --debug
-
-      - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Gita-AI-Krishna-APK
-          path: gita_flutter_app/gita_flutter/build/app/outputs/flutter-apk/app-debug.apk
-          retention-days: 30
+                                                                                - name: Set up Flutter
+                                                                                        uses: subosito/flutter-action@v2
+                                                                                                with:
+                                                                                                          flutter-version: '3.19.6'
+                                                                                                                    channel: 'stable'
+                                                                                                                    
+                                                                                                                          - name: Create local.properties
+                                                                                                                                  run: |
+                                                                                                                                            FLUTTER_PATH=$(dirname $(dirname $(which flutter)))
+                                                                                                                                                      echo "flutter.sdk=$FLUTTER_PATH" > gita_flutter_app/gita_flutter/android/local.properties
+                                                                                                                                                                echo "flutter.versionCode=1" >> gita_flutter_app/gita_flutter/android/local.properties
+                                                                                                                                                                          echo "flutter.versionName=1.0" >> gita_flutter_app/gita_flutter/android/local.properties
+                                                                                                                                                                                    echo "sdk.dir=$ANDROID_HOME" >> gita_flutter_app/gita_flutter/android/local.properties
+                                                                                                                                                                                              cat gita_flutter_app/gita_flutter/android/local.properties
+                                                                                                                                                                                              
+                                                                                                                                                                                                    - name: Inject API Keys into constants.dart
+                                                                                                                                                                                                            run: |
+                                                                                                                                                                                                                      sed -i "s|static const String anthropicKey = '.*'|static const String anthropicKey = '${{ secrets.ANTHROPIC_KEY }}'|g" gita_flutter_app/gita_flutter/lib/constants.dart || true
+                                                                                                                                                                                                                                sed -i "s|static const String elevenLabsKey = '.*'|static const String elevenLabsKey = '${{ secrets.ELEVENLABS_KEY }}'|g" gita_flutter_app/gita_flutter/lib/constants.dart || true
+                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                      - name: Get Flutter dependencies
+                                                                                                                                                                                                                                              working-directory: gita_flutter_app/gita_flutter
+                                                                                                                                                                                                                                                      run: flutter pub get
+                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                            - name: Build Debug APK
+                                                                                                                                                                                                                                                                    working-directory: gita_flutter_app/gita_flutter
+                                                                                                                                                                                                                                                                            run: flutter build apk --debug
+                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                  - name: Upload APK artifact
+                                                                                                                                                                                                                                                                                          uses: actions/upload-artifact@v4
+                                                                                                                                                                                                                                                                                                  with:
+                                                                                                                                                                                                                                                                                                            name: Gita-AI-Krishna-APK
+                                                                                                                                                                                                                                                                                                                      path: gita_flutter_app/gita_flutter/build/app/outputs/flutter-apk/app-debug.apk
+                                                                                                                                                                                                                                                                                                                                retention-days: 30
