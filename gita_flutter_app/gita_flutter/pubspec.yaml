@@ -1,0 +1,41 @@
+name: gita_ai
+description: श्री कृष्ण गीता संवाद - Bhagavad Gita AI App
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # HTTP — API calls ke liye
+  http: ^1.2.0
+  
+  # Audio playback — ElevenLabs voice
+  just_audio: ^0.9.36
+  audio_session: ^0.1.18
+  
+  # Text to Speech — fallback voice
+  flutter_tts: ^4.0.2
+  
+  # File system — temp audio files
+  path_provider: ^2.1.2
+  
+  # Settings save karne ke liye
+  shared_preferences: ^2.2.2
+  
+  # Google Fonts — Hindi fonts
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/

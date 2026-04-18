@@ -1,0 +1,12 @@
+# Flutter SDK path — अपना path डालें
+flutter.sdk=C:\\flutter
+# OR on Mac/Linux:
+# flutter.sdk=/home/user/flutter
+
+sdk.dir=C:\\Users\\YourName\\AppData\\Local\\Android\\sdk
+# OR on Mac/Linux:
+# sdk.dir=/home/user/Android/sdk
+
+flutter.buildMode=release
+flutter.versionName=1.0.0
+flutter.versionCode=1

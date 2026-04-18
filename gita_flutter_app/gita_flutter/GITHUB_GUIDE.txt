@@ -1,0 +1,102 @@
+═══════════════════════════════════════════════════════════════
+   GitHub से APK Download करें — Step by Step Guide
+   (बिना Flutter Install किए — सिर्फ 15 मिनट)
+═══════════════════════════════════════════════════════════════
+
+STEP 1 — GitHub Account बनाएँ (पहले से है तो Skip करें)
+─────────────────────────────────────────────────────────────
+  1. github.com पर जाएँ
+  2. "Sign up" पर click करें
+  3. Email, Username, Password डालें
+  4. Free plan चुनें ✅
+
+═══════════════════════════════════════════════════════════════
+
+STEP 2 — नई Repository बनाएँ
+─────────────────────────────────────────────────────────────
+  1. Login के बाद "+" icon → "New repository"
+  2. Repository name: gita-ai-krishna
+  3. Public रखें (या Private)
+  4. "Create repository" click करें ✅
+
+═══════════════════════════════════════════════════════════════
+
+STEP 3 — Files Upload करें
+─────────────────────────────────────────────────────────────
+  1. Repository page पर "uploading an existing file" click करें
+  2. ZIP file को Extract करें अपने computer पर
+  3. gita_flutter folder के अंदर की सभी files select करें
+     (पूरा folder नहीं, उसके अंदर की files)
+  4. Drag & Drop करें GitHub पर
+  5. "Commit changes" click करें ✅
+
+═══════════════════════════════════════════════════════════════
+
+STEP 4 — API Keys Secret में डालें (बहुत ज़रूरी!)
+─────────────────────────────────────────────────────────────
+  1. Repository → "Settings" tab
+  2. Left menu → "Secrets and variables" → "Actions"
+  3. "New repository secret" click करें
+  
+  पहला Secret:
+    Name  : ANTHROPIC_KEY
+    Value : sk-ant-api...आपकी Claude key...
+    → "Add secret"
+  
+  दूसरा Secret:
+    Name  : ELEVENLABS_KEY  
+    Value : sk_d1ff...आपकी ElevenLabs key...
+    → "Add secret"
+  
+  ✅ अब keys safe हैं — code में नहीं दिखेंगी
+
+═══════════════════════════════════════════════════════════════
+
+STEP 5 — APK Build करें (Automatic!)
+─────────────────────────────────────────────────────────────
+  Option A — Automatic (files upload होने पर खुद build होगी)
+    Files upload करते ही build शुरू हो जाएगी!
+  
+  Option B — Manual trigger
+    1. Repository → "Actions" tab
+    2. "Build Gita AI APK" workflow click करें
+    3. "Run workflow" → "Run workflow" ✅
+  
+  ⏱️ Build time: 10-15 मिनट
+
+═══════════════════════════════════════════════════════════════
+
+STEP 6 — APK Download करें
+─────────────────────────────────────────────────────────────
+  1. Repository → "Actions" tab
+  2. Latest workflow run click करें (green ✅ होगा)
+  3. नीचे "Artifacts" section में जाएँ
+  4. "Gita-AI-Krishna-APK" पर click करें
+  5. ZIP download होगी → उसे extract करें
+  6. app-release.apk मिलेगी ✅
+  
+  यह APK directly:
+  - Phone पर install हो सकती है
+  - Play Store पर upload हो सकती है
+
+═══════════════════════════════════════════════════════════════
+
+STEP 7 — Play Store पर Upload (Optional)
+─────────────────────────────────────────────────────────────
+  1. play.google.com/console → Account बनाएँ ($25 fee)
+  2. "Create app" → APK upload
+  3. Store listing fill करें:
+     - App name: श्री कृष्ण गीता संवाद
+     - Description: भगवद् गीता AI — हर प्रश्न का उत्तर
+     - Category: Lifestyle / Education
+  4. Screenshots add करें (कम से कम 2)
+  5. Submit for review
+  6. 3-7 दिन में Publish ✅
+
+═══════════════════════════════════════════════════════════════
+⚠️ ध्यान रखें:
+  - API Keys कभी code में मत डालें
+  - हमेशा GitHub Secrets में डालें
+  - Anthropic key: console.anthropic.com
+  - ElevenLabs key: elevenlabs.io → Profile
+═══════════════════════════════════════════════════════════════
