@@ -18,14 +18,10 @@ android {
         jvmTarget = "1.8"
     }
 
-    sourceSets {
-        main.java.srcDirs += "src/main/kotlin"
-    }
-
     defaultConfig {
         applicationId "com.gitaai.krishna"
-        minSdkVersion 21
-        targetSdkVersion flutter.targetSdkVersion
+        minSdk 21
+        targetSdk flutter.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -42,5 +38,3 @@ android {
 flutter {
     source "../.."
 }
-
-dependencies {}
